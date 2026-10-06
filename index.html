@@ -11,39 +11,64 @@
 </head>
 <body>
 
-    <div class="scan-line"></div>
+    <!-- Сетка на фоне -->
+    <div class="grid-bg"></div>
+
+    <!-- Углы-скобки -->
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+    <!-- Шум -->
     <div class="noise"></div>
+
+    <!-- Вертикальный текст слева -->
+    <div class="side-text left">ALIEVCEO — 2025</div>
+    <div class="side-text right">MEMECOIN CREATOR</div>
 
     <main class="container">
 
         <div class="meta-top">
             <span>001</span>
-            <span>LINKS</span>
+            <span>LINKS / BIO</span>
+            <span>EST. 2025</span>
         </div>
 
-        <h1>alievceo</h1>
+        <h1 class="reveal">
+            <span>aliev</span>
+            <span>ceo</span>
+        </h1>
 
         <nav class="links">
             <a href="#" class="link">
+                <span class="link-num">01</span>
                 <span class="link-name">pump.fun</span>
                 <span class="link-arrow">↗</span>
             </a>
             <a href="#" class="link">
+                <span class="link-num">02</span>
                 <span class="link-name">X</span>
                 <span class="link-arrow">↗</span>
             </a>
             <a href="#" class="link">
+                <span class="link-num">03</span>
                 <span class="link-name">Telegram</span>
                 <span class="link-arrow">↗</span>
             </a>
         </nav>
 
-        <div class="meta-bottom">
-            <span>© 2025</span>
-            <span>alievceo</span>
-        </div>
-
     </main>
+
+    <!-- Бегущая строка снизу -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span>ALIEVCEO — PUMP.FUN — X — TELEGRAM — </span>
+            <span>ALIEVCEO — PUMP.FUN — X — TELEGRAM — </span>
+            <span>ALIEVCEO — PUMP.FUN — X — TELEGRAM — </span>
+            <span>ALIEVCEO — PUMP.FUN — X — TELEGRAM — </span>
+        </div>
+    </div>
 
 </body>
 </html>
