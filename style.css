@@ -4,58 +4,142 @@
     box-sizing: border-box;
 }
 
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover: rgba(255, 255, 255, 0.07);
+    --fg: #ffffff;
+    --fg-dim: #8a8a8a;
+    --fg-muted: #4a4a4a;
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
-    background: #0a0a0a;
-    color: #ffffff;
+    background: #060606;
+    color: var(--fg);
     font-family: 'Inter', sans-serif;
-    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    position: relative;
 }
 
+/* Фоновые световые пятна — дают эффект стекла */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+body::before {
+    width: 500px;
+    height: 500px;
+    background: #2a2a2a;
+    top: -200px;
+    left: -150px;
+}
+
+body::after {
+    width: 600px;
+    height: 600px;
+    background: #1a1a1a;
+    bottom: -250px;
+    right: -200px;
+}
+
+/* ===== КАРТОЧКА (СТЕКЛО) ===== */
 .card {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    max-width: 360px;
-    border: 1px solid #1f1f1f;
-    padding: 40px 32px;
-    background: #0f0f0f;
+    max-width: 380px;
+    padding: 48px 36px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 2px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 
+        0 24px 64px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 h1 {
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-family: 'Anton', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: lowercase;
     text-align: center;
-    margin-bottom: 32px;
-    color: #ffffff;
+    margin-bottom: 40px;
+    color: var(--fg);
 }
 
+/* ===== ССЫЛКИ ===== */
 .links {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .links a {
-    display: block;
-    padding: 16px 0;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
     text-decoration: none;
-    color: #888888;
+    color: var(--fg-dim);
     font-size: 13px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     font-weight: 500;
-    border-top: 1px solid #1f1f1f;
-    transition: color 0.2s ease;
-}
-
-.links a:last-child {
-    border-bottom: 1px solid #1f1f1f;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    transition: all 0.25s ease;
 }
 
 .links a:hover {
-    color: #ffffff;
+    color: var(--fg);
+    background: var(--glass-hover);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateX(4px);
+}
+
+.links .arrow {
+    font-size: 14px;
+    color: var(--fg-muted);
+    transition: all 0.25s ease;
+}
+
+.links a:hover .arrow {
+    color: var(--fg);
+    transform: translate(2px, -2px);
+}
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+@media (max-width: 480px) {
+    .card {
+        padding: 40px 24px;
+        max-width: 100%;
+    }
+    h1 {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+    .links a {
+        padding: 14px 16px;
+        font-size: 12px;
+    }
 }
