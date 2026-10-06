@@ -19,6 +19,9 @@ html, body {
 
 body {
     background: var(--bg);
+    background-image: 
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.025) 0%, transparent 60%),
+        radial-gradient(circle at 80% 90%, rgba(255,255,255,0.02) 0%, transparent 55%);
     color: var(--fg);
     font-family: var(--mono);
     font-size: 14px;
@@ -28,7 +31,7 @@ body {
     position: relative;
 }
 
-/* ===== ШУМ ===== */
+/* Шум */
 .noise {
     position: fixed;
     inset: 0;
@@ -38,7 +41,7 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ===== ЛИНИЯ СКАНИРОВАНИЯ СВЕРХУ ===== */
+/* Линия сканирования */
 .scan-line {
     position: fixed;
     top: 0;
@@ -49,12 +52,12 @@ body {
         90deg,
         transparent 0%,
         transparent 40%,
-        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.5) 50%,
         transparent 60%,
         transparent 100%
     );
     background-size: 200% 100%;
-    animation: scan 6s linear infinite;
+    animation: scan 7s linear infinite;
     z-index: 101;
 }
 
@@ -63,7 +66,7 @@ body {
     100% { background-position: -200% 0; }
 }
 
-/* ===== КОНТЕЙНЕР ===== */
+/* Контейнер */
 .container {
     min-height: 100vh;
     max-width: 640px;
@@ -75,34 +78,33 @@ body {
     z-index: 2;
 }
 
-/* ===== ВЕРХНЯЯ МЕТКА ===== */
+/* Верхняя метка */
 .meta-top {
     display: flex;
     justify-content: space-between;
     font-size: 10px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: var(--fg-muted);
     text-transform: uppercase;
-    padding-bottom: 24px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 80px;
+    margin-bottom: 72px;
 }
 
-/* ===== НИК ===== */
+/* Ник */
 h1 {
     font-family: 'Anton', sans-serif;
-    font-size: clamp(72px, 18vw, 160px);
+    font-size: clamp(72px, 18vw, 150px);
     font-weight: 400;
     line-height: 0.85;
     letter-spacing: -0.03em;
     text-transform: lowercase;
     color: var(--fg);
-    margin-bottom: 80px;
-    /* Небольшой сдвиг для динамики */
+    margin-bottom: 72px;
     margin-left: -4px;
 }
 
-/* ===== ССЫЛКИ ===== */
+/* Ссылки */
 .links {
     display: flex;
     flex-direction: column;
@@ -113,11 +115,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 28px 0;
+    padding: 32px 0;
     border-top: 1px solid var(--border);
     text-decoration: none;
     color: var(--fg-dim);
-    transition: color 0.3s ease, padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.3s ease, padding-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
@@ -126,7 +128,6 @@ h1 {
     border-bottom: 1px solid var(--border);
 }
 
-/* Тонкая белая полоса слева */
 .link::before {
     content: '';
     position: absolute;
@@ -135,12 +136,12 @@ h1 {
     bottom: 0;
     width: 0;
     background: var(--fg);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link:hover {
     color: var(--fg);
-    padding-left: 24px;
+    padding-left: 28px;
 }
 
 .link:hover::before {
@@ -148,55 +149,43 @@ h1 {
 }
 
 .link-name {
-    font-family: var(--mono);
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-transform: lowercase;
     transition: color 0.3s ease;
 }
 
 .link-arrow {
-    font-size: 18px;
+    font-size: 24px;
     color: var(--fg-muted);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link:hover .link-arrow {
     color: var(--fg);
-    transform: translateX(6px);
+    transform: translate(6px, -6px);
 }
 
-/* ===== НИЖНЯЯ МЕТКА ===== */
+/* Нижняя метка */
 .meta-bottom {
     display: flex;
     justify-content: space-between;
     font-size: 10px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: var(--fg-muted);
     text-transform: uppercase;
-    margin-top: 80px;
-    padding-top: 24px;
+    margin-top: 72px;
 }
 
-/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+/* Мобильная адаптация */
 @media (max-width: 600px) {
-    .container {
-        padding: 32px 20px;
-    }
-    .meta-top {
-        margin-bottom: 60px;
-    }
-    h1 {
-        margin-bottom: 60px;
-    }
-    .link {
-        padding: 22px 0;
-    }
-    .link-name {
-        font-size: 14px;
-    }
-    .meta-bottom {
-        margin-top: 60px;
-    }
+    .container { padding: 32px 20px; }
+    .meta-top { margin-bottom: 56px; }
+    h1 { margin-bottom: 56px; }
+    .link { padding: 26px 0; }
+    .link-name { font-size: 28px; }
+    .link-arrow { font-size: 20px; }
+    .meta-bottom { margin-top: 56px; }
 }
