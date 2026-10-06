@@ -5,60 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>alievceo</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="topbar">
-        <span>STATUS: ONLINE</span>
-        <span id="clock">00:00:00</span>
-    </div>
+    <!-- Тонкая линия сверху с бегущей точкой -->
+    <div class="scan-line"></div>
+
+    <!-- Шум поверх фона -->
+    <div class="noise"></div>
 
     <main class="container">
 
-        <section class="hero">
-            <div class="avatar-wrap">
-                <img src="https://via.placeholder.com/200" alt="avatar" class="avatar">
-                <div class="avatar-line"></div>
-            </div>
-            <h1>alievceo</h1>
-            <p class="tagline">// memecoin creator</p>
-        </section>
+        <div class="meta-top">
+            <span>001</span>
+            <span>BIO / LINK</span>
+        </div>
 
-        <div class="divider"></div>
+        <h1>alievceo</h1>
 
-        <section class="links">
-            <a href="#" class="link-item">
-                <span class="link-num">01</span>
-                <span class="link-name">TELEGRAM</span>
+        <nav class="links">
+            <a href="#" class="link">
+                <span class="link-name">Telegram</span>
                 <span class="link-arrow">→</span>
             </a>
-            <a href="#" class="link-item">
-                <span class="link-num">02</span>
-                <span class="link-name">X / TWITTER</span>
+            <a href="#" class="link">
+                <span class="link-name">X / Twitter</span>
                 <span class="link-arrow">→</span>
             </a>
-            <a href="#" class="link-item">
-                <span class="link-num">03</span>
-                <span class="link-name">INSTAGRAM</span>
+            <a href="#" class="link">
+                <span class="link-name">Instagram</span>
                 <span class="link-arrow">→</span>
             </a>
-            <a href="#" class="link-item">
-                <span class="link-num">04</span>
-                <span class="link-name">EMAIL</span>
+            <a href="#" class="link">
+                <span class="link-name">Email</span>
                 <span class="link-arrow">→</span>
             </a>
-        </section>
+        </nav>
 
-        <div class="divider"></div>
-
-        <footer class="footer">
+        <div class="meta-bottom">
             <span>© 2025</span>
-            <span>alievceo</span>
-        </footer>
+            <span>ALL LINKS</span>
+        </div>
 
     </main>
 
-    <script src="script.js"></script>
 </body>
 </html>
