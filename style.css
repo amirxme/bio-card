@@ -1,0 +1,302 @@
+/* ===== СБРОС ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0a0a0a;
+    --bg-elev: #111111;
+    --fg: #ffffff;
+    --fg-dim: #a0a0a0;
+    --fg-muted: #555555;
+    --border: #1f1f1f;
+    --border-strong: #2a2a2a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== ВЕРХНЯЯ ПОЛОСА ===== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--fg-muted);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+}
+
+.topbar-left { display: flex; align-items: center; gap: 10px; }
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: var(--fg);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.divider-v {
+    width: 1px;
+    height: 10px;
+    background: var(--border-strong);
+}
+
+/* ===== КОНТЕЙНЕР ===== */
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px 40px;
+}
+
+/* ===== HERO (НИК) ===== */
+.hero {
+    margin-bottom: 64px;
+}
+
+.hero-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(72px, 16vw, 140px);
+    font-weight: 400;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin-bottom: 28px;
+}
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--fg-dim);
+}
+
+.hero-meta .sep { color: var(--fg-muted); }
+
+/* ===== МОНОГРАММА (вместо фото) ===== */
+.monogram-block {
+    margin-bottom: 64px;
+}
+
+.monogram-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: var(--bg-elev);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.monogram {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(240px, 50vw, 420px);
+    line-height: 1;
+    color: var(--fg);
+    letter-spacing: -0.04em;
+    user-select: none;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.monogram-wrap:hover .monogram {
+    transform: scale(1.05);
+}
+
+.monogram-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: var(--fg);
+}
+
+.monogram-corner.tl {
+    top: 16px;
+    left: 16px;
+    border-top: 1px solid var(--fg);
+    border-left: 1px solid var(--fg);
+}
+
+.monogram-corner.br {
+    bottom: 16px;
+    right: 16px;
+    border-bottom: 1px solid var(--fg);
+    border-right: 1px solid var(--fg);
+}
+
+.monogram-caption {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--fg-muted);
+}
+
+/* ===== СЕКЦИИ (ПРОЕКТЫ И КОНТАКТЫ) ===== */
+.projects-section,
+.links-section {
+    margin-bottom: 64px;
+}
+
+.section-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--fg);
+    transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.link-item:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.link-item:hover {
+    padding-left: 20px;
+}
+
+.link-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: var(--fg);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-item:hover::before {
+    width: 2px;
+}
+
+.link-num {
+    font-size: 10px;
+    color: var(--fg-muted);
+    font-weight: 600;
+    letter-spacing: 1px;
+    min-width: 24px;
+}
+
+.link-name {
+    flex: 1;
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    transition: color 0.3s ease;
+}
+
+.link-item:hover .link-name {
+    color: var(--fg);
+}
+
+.link-arrow {
+    font-size: 20px;
+    color: var(--fg-muted);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-item:hover .link-arrow {
+    color: var(--fg);
+    transform: translate(4px, -4px);
+}
+
+/* Секция проектов — чуть приглушённее */
+.projects-section .link-name {
+    color: #777777;
+}
+
+.projects-section .link-item:hover .link-name {
+    color: #ffffff;
+}
+
+.projects-section .link-item::before {
+    background: #888888;
+}
+
+/* ===== ПОДВАЛ ===== */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--fg-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* ===== АДАПТАЦИЯ ПОД ТЕЛЕФОН ===== */
+@media (max-width: 600px) {
+    .topbar { padding: 16px 20px; font-size: 9px; }
+    .container { padding: 48px 20px 32px; }
+    h1 { font-size: clamp(60px, 18vw, 90px); }
+    .link-name { font-size: 24px; }
+    .link-item { padding: 22px 0; gap: 16px; }
+    .footer { flex-direction: column; gap: 8px; }
+    .hero { margin-bottom: 48px; }
+    .monogram-block { margin-bottom: 48px; }
+    .projects-section,
+    .links-section { margin-bottom: 48px; }
+}
