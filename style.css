@@ -19,92 +19,144 @@ html, body {
 
 body {
     background: var(--bg);
-    background-image: 
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.025) 0%, transparent 60%),
-        radial-gradient(circle at 80% 90%, rgba(255,255,255,0.02) 0%, transparent 55%);
     color: var(--fg);
     font-family: var(--mono);
     font-size: 14px;
-    overflow-x: hidden;
+    overflow: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
 }
 
-/* Шум */
+/* ===== СЕТКА НА ФОНЕ ===== */
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 80%);
+}
+
+/* ===== ШУМ ===== */
 .noise {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 100;
-    opacity: 0.035;
+    opacity: 0.04;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Линия сканирования */
-.scan-line {
+/* ===== УГЛЫ-СКОБКИ ===== */
+.corner {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        transparent 40%,
-        rgba(255, 255, 255, 0.5) 50%,
-        transparent 60%,
-        transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: scan 7s linear infinite;
-    z-index: 101;
+    width: 32px;
+    height: 32px;
+    border-color: var(--fg-muted);
+    z-index: 50;
+    pointer-events: none;
 }
 
-@keyframes scan {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+.corner.tl { top: 20px; left: 20px; border-top: 1px solid; border-left: 1px solid; }
+.corner.tr { top: 20px; right: 20px; border-top: 1px solid; border-right: 1px solid; }
+.corner.bl { bottom: 60px; left: 20px; border-bottom: 1px solid; border-left: 1px solid; }
+.corner.br { bottom: 60px; right: 20px; border-bottom: 1px solid; border-right: 1px solid; }
+
+/* ===== ВЕРТИКАЛЬНЫЙ ТЕКСТ ===== */
+.side-text {
+    position: fixed;
+    top: 50%;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    z-index: 50;
+    pointer-events: none;
+    white-space: nowrap;
 }
 
-/* Контейнер */
+.side-text.left {
+    left: 20px;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.side-text.right {
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+/* ===== КОНТЕЙНЕР ===== */
 .container {
     min-height: 100vh;
-    max-width: 640px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 40px 32px;
+    padding: 40px 80px 100px;
     display: flex;
     flex-direction: column;
     position: relative;
     z-index: 2;
 }
 
-/* Верхняя метка */
+/* ===== ВЕРХНЯЯ МЕТКА ===== */
 .meta-top {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     font-size: 10px;
     letter-spacing: 3px;
     color: var(--fg-muted);
     text-transform: uppercase;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 72px;
+    margin-bottom: 60px;
 }
 
-/* Ник */
+.meta-top span:nth-child(2) { text-align: center; }
+.meta-top span:nth-child(3) { text-align: right; }
+
+/* ===== НИК ===== */
 h1 {
     font-family: 'Anton', sans-serif;
-    font-size: clamp(72px, 18vw, 150px);
+    font-size: clamp(80px, 20vw, 180px);
     font-weight: 400;
-    line-height: 0.85;
+    line-height: 0.82;
     letter-spacing: -0.03em;
     text-transform: lowercase;
     color: var(--fg);
-    margin-bottom: 72px;
-    margin-left: -4px;
+    margin-bottom: 60px;
+    margin-left: -6px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Ссылки */
+h1 span {
+    display: block;
+    /* Анимация загрузки */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+h1 span:nth-child(1) { animation-delay: 0.1s; }
+h1 span:nth-child(2) { 
+    animation-delay: 0.25s;
+    padding-left: 0.4em;
+    color: var(--fg-dim);
+}
+
+@keyframes reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ССЫЛКИ ===== */
 .links {
     display: flex;
     flex-direction: column;
@@ -112,10 +164,11 @@ h1 {
 }
 
 .link {
-    display: flex;
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
     align-items: center;
-    justify-content: space-between;
-    padding: 32px 0;
+    gap: 20px;
+    padding: 28px 0;
     border-top: 1px solid var(--border);
     text-decoration: none;
     color: var(--fg-dim);
@@ -148,13 +201,30 @@ h1 {
     width: 2px;
 }
 
+.link-num {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--fg-muted);
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.link:hover .link-num {
+    color: var(--fg);
+}
+
 .link-name {
     font-family: 'Anton', sans-serif;
     font-size: 36px;
     font-weight: 400;
     letter-spacing: -0.01em;
     text-transform: lowercase;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: left;
+}
+
+.link:hover .link-name {
+    transform: scale(1.02);
 }
 
 .link-arrow {
@@ -168,24 +238,63 @@ h1 {
     transform: translate(6px, -6px);
 }
 
-/* Нижняя метка */
-.meta-bottom {
+/* ===== БЕГУЩАЯ СТРОКА ===== */
+.marquee {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    z-index: 60;
     display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--fg-muted);
-    text-transform: uppercase;
-    margin-top: 72px;
+    align-items: center;
 }
 
-/* Мобильная адаптация */
-@media (max-width: 600px) {
-    .container { padding: 32px 20px; }
-    .meta-top { margin-bottom: 56px; }
-    h1 { margin-bottom: 56px; }
-    .link { padding: 26px 0; }
+.marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-track span {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    padding-right: 40px;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+@media (max-width: 700px) {
+    .container {
+        padding: 32px 20px 90px;
+    }
+    .side-text { display: none; }
+    .corner.tl, .corner.tr { top: 12px; }
+    .corner.tl, .corner.bl { left: 12px; }
+    .corner.tr, .corner.br { right: 12px; }
+    .meta-top {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin-bottom: 48px;
+        text-align: center;
+    }
+    .meta-top span:nth-child(2),
+    .meta-top span:nth-child(3) { text-align: center; }
+    h1 { margin-bottom: 48px; }
+    .link {
+        grid-template-columns: 32px 1fr auto;
+        gap: 12px;
+        padding: 24px 0;
+    }
     .link-name { font-size: 28px; }
     .link-arrow { font-size: 20px; }
-    .meta-bottom { margin-top: 56px; }
 }
