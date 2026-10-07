@@ -154,7 +154,7 @@ h1 span::before {
 
 h1 span::after {
     color: var(--fg-dim);
-    animation: glitchBot 4s infinite steps(1);
+    animation: glitchBot 4s steps(1) infinite;
     animation-delay: 0.05s;
 }
 
@@ -251,7 +251,7 @@ h1 span::after {
     opacity: 0.5;
 }
 
-/* ===== ЛОКАЦИЯ (внизу) ===== */
+/* Локация */
 .location {
     display: flex;
     align-items: center;
@@ -260,7 +260,6 @@ h1 span::after {
     letter-spacing: 1.5px;
     color: #999999;
     text-transform: lowercase;
-    margin-top: 32px;
 }
 
 /* ===== ССЫЛКИ ===== */
@@ -357,7 +356,7 @@ h1 span::after {
     }
     .status { margin-bottom: 28px; }
     .status-meta { font-size: 11px; letter-spacing: 1px; }
-    .location { font-size: 11px; letter-spacing: 1px; margin-top: 28px; }
+    .location { font-size: 11px; letter-spacing: 1px; }
     .link {
         grid-template-columns: 32px 1fr auto;
         gap: 12px;
