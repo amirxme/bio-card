@@ -83,14 +83,33 @@
     </main>
 
     <script>
-        fetch('https://abacus.jasoncameron.dev/hit/alievceo/visits')
-            .then(r => r.json())
-            .then(data => {
-                document.getElementById('viewCount').textContent = String(data.value).padStart(6, '0');
-            })
-            .catch(() => {
-                document.getElementById('viewCount').textContent = '000000';
-            });
+        const NS = 'alievceo';
+        const KEY = 'visits';
+        const STORAGE_KEY = 'alievceo_visited';
+
+        async function initCounter() {
+            const el = document.getElementById('viewCount');
+            const isNew = !localStorage.getItem(STORAGE_KEY);
+
+            try {
+                const endpoint = isNew
+                    ? `https://abacus.jasoncameron.dev/hit/${NS}/${KEY}`
+                    : `https://abacus.jasoncameron.dev/get/${NS}/${KEY}`;
+
+                const res = await fetch(endpoint);
+                const data = await res.json();
+
+                el.textContent = String(data.value).padStart(6, '0');
+
+                if (isNew) {
+                    localStorage.setItem(STORAGE_KEY, '1');
+                }
+            } catch {
+                el.textContent = '------';
+            }
+        }
+
+        initCounter();
     </script>
 
 </body>
