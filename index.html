@@ -34,13 +34,25 @@
                 </div>
             </div>
 
-            <div class="status-block">
-                <div class="status-line">
-                    <span class="dot"></span>
-                    <span>LOCATION</span>
+            <div class="status-block status-block-split">
+                <div class="status-col">
+                    <div class="status-line">
+                        <span class="dot"></span>
+                        <span>LOCATION</span>
+                    </div>
+                    <div class="status-meta">
+                        <span>dagestan, russia</span>
+                    </div>
                 </div>
-                <div class="status-meta">
-                    <span>dagestan, russia</span>
+
+                <div class="status-col status-col-right">
+                    <div class="status-line">
+                        <span class="dot"></span>
+                        <span>VISITS</span>
+                    </div>
+                    <div class="status-meta">
+                        <span id="viewCount">------</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,6 +81,17 @@
         </nav>
 
     </main>
+
+    <script>
+        fetch('https://api.counterapi.dev/v1/alievceo/visits/up')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('viewCount').textContent = String(data.count).padStart(6, '0');
+            })
+            .catch(() => {
+                document.getElementById('viewCount').textContent = '000000';
+            });
+    </script>
 
 </body>
 </html>
