@@ -217,7 +217,6 @@ h1 span::after {
     color: var(--fg);
 }
 
-/* Единая точка — используется и в статусе, и в локации */
 .dot {
     width: 6px;
     height: 6px;
@@ -233,7 +232,6 @@ h1 span::after {
     50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-/* Мета-строка статуса */
 .status-meta {
     display: flex;
     flex-wrap: wrap;
@@ -249,17 +247,6 @@ h1 span::after {
 .status-meta .sep {
     color: #999999;
     opacity: 0.5;
-}
-
-/* Локация */
-.location {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    color: #999999;
-    text-transform: lowercase;
 }
 
 /* ===== ССЫЛКИ ===== */
@@ -356,7 +343,6 @@ h1 span::after {
     }
     .status { margin-bottom: 28px; }
     .status-meta { font-size: 11px; letter-spacing: 1px; }
-    .location { font-size: 11px; letter-spacing: 1px; }
     .link {
         grid-template-columns: 32px 1fr auto;
         gap: 12px;
