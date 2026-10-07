@@ -83,10 +83,10 @@
     </main>
 
     <script>
-        fetch('https://api.counterapi.dev/v1/alievceo/visits/up')
+        fetch('https://abacus.jasoncameron.dev/hit/alievceo/visits')
             .then(r => r.json())
             .then(data => {
-                document.getElementById('viewCount').textContent = String(data.count).padStart(6, '0');
+                document.getElementById('viewCount').textContent = String(data.value).padStart(6, '0');
             })
             .catch(() => {
                 document.getElementById('viewCount').textContent = '000000';
