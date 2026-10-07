@@ -74,7 +74,7 @@ h1 {
     letter-spacing: -0.03em;
     text-transform: lowercase;
     color: var(--fg);
-    margin-bottom: 60px;
+    margin-bottom: 32px;
     margin-left: -6px;
     margin-top: 40px;
     display: flex;
@@ -131,9 +131,6 @@ h1 span:nth-child(2) {
 }
 
 /* ===== ГЛИТЧ ===== */
-/* Дублируем текст через ::before и ::after, каждую копию двигаем и обрезаем —
-   получается эффект сломанного экрана */
-
 h1 span::before,
 h1 span::after {
     content: attr(data-text);
@@ -148,13 +145,11 @@ h1 span::after {
     opacity: 0;
 }
 
-/* Верхний глитч-слой (белый, сдвиг влево-вверх) */
 h1 span::before {
     color: var(--fg);
     animation: glitchTop 4s infinite steps(1);
 }
 
-/* Нижний глитч-слой (серый, сдвиг вправо-вниз) */
 h1 span::after {
     color: var(--fg-dim);
     animation: glitchBot 4s infinite steps(1);
@@ -162,7 +157,6 @@ h1 span::after {
 }
 
 @keyframes glitchTop {
-    /* 0–92% — спрятан, 92–100% — вспышка глитча */
     0%, 92%, 100% {
         opacity: 0;
         clip-path: inset(0 0 100% 0);
@@ -226,6 +220,55 @@ h1 span::after {
         clip-path: inset(100% 0 0 0);
         transform: translate(0, 0);
     }
+}
+
+/* ===== СТАТУС ===== */
+.status {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+    font-family: var(--mono);
+}
+
+.status-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: var(--fg);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.status-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--fg-muted);
+    text-transform: lowercase;
+}
+
+.status-meta .sep {
+    color: var(--fg-muted);
+    opacity: 0.5;
 }
 
 /* ===== ССЫЛКИ ===== */
@@ -315,7 +358,8 @@ h1 span::after {
     .container {
         padding: 40px 20px 40px;
     }
-    h1 { margin-bottom: 48px; margin-top: 0; }
+    h1 { margin-bottom: 24px; margin-top: 0; }
+    .status { margin-bottom: 32px; }
     .link {
         grid-template-columns: 32px 1fr auto;
         gap: 12px;
