@@ -107,7 +107,9 @@ h1::before {
     50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
 }
 
+/* Строки ника */
 h1 span {
+    position: relative;
     display: block;
     opacity: 0;
     transform: translateY(40px);
@@ -128,7 +130,105 @@ h1 span:nth-child(2) {
     }
 }
 
-/* Ссылки */
+/* ===== ГЛИТЧ ===== */
+/* Дублируем текст через ::before и ::after, каждую копию двигаем и обрезаем —
+   получается эффект сломанного экрана */
+
+h1 span::before,
+h1 span::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    padding-left: inherit;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Верхний глитч-слой (белый, сдвиг влево-вверх) */
+h1 span::before {
+    color: var(--fg);
+    animation: glitchTop 4s infinite steps(1);
+}
+
+/* Нижний глитч-слой (серый, сдвиг вправо-вниз) */
+h1 span::after {
+    color: var(--fg-dim);
+    animation: glitchBot 4s infinite steps(1);
+    animation-delay: 0.05s;
+}
+
+@keyframes glitchTop {
+    /* 0–92% — спрятан, 92–100% — вспышка глитча */
+    0%, 92%, 100% {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+        transform: translate(0, 0);
+    }
+    93% {
+        opacity: 1;
+        clip-path: inset(10% 0 55% 0);
+        transform: translate(-4px, -2px);
+    }
+    94% {
+        opacity: 1;
+        clip-path: inset(45% 0 25% 0);
+        transform: translate(4px, 1px);
+    }
+    95% {
+        opacity: 1;
+        clip-path: inset(20% 0 60% 0);
+        transform: translate(-3px, 0);
+    }
+    96% {
+        opacity: 1;
+        clip-path: inset(65% 0 10% 0);
+        transform: translate(3px, -1px);
+    }
+    97% {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes glitchBot {
+    0%, 92%, 100% {
+        opacity: 0;
+        clip-path: inset(100% 0 0 0);
+        transform: translate(0, 0);
+    }
+    93% {
+        opacity: 1;
+        clip-path: inset(60% 0 15% 0);
+        transform: translate(4px, 2px);
+    }
+    94% {
+        opacity: 1;
+        clip-path: inset(25% 0 55% 0);
+        transform: translate(-4px, -1px);
+    }
+    95% {
+        opacity: 1;
+        clip-path: inset(5% 0 70% 0);
+        transform: translate(3px, 0);
+    }
+    96% {
+        opacity: 1;
+        clip-path: inset(50% 0 30% 0);
+        transform: translate(-3px, 1px);
+    }
+    97% {
+        opacity: 0;
+        clip-path: inset(100% 0 0 0);
+        transform: translate(0, 0);
+    }
+}
+
+/* ===== ССЫЛКИ ===== */
 .links {
     display: flex;
     flex-direction: column;
