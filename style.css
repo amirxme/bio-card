@@ -178,7 +178,7 @@ h1 span::after {
     97% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0, 0); }
 }
 
-/* ===== СТАТУС — растянут на всю ширину ===== */
+/* ===== СТАТУС ===== */
 .status {
     display: flex;
     flex-direction: column;
@@ -214,12 +214,12 @@ h1 span::after {
     50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-/* Мета-строка статуса — разъезжается по краям */
+/* Мета-строка статуса — всё слева, в одну строку */
 .status-meta {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
     font-size: 11px;
     letter-spacing: 1.5px;
     color: var(--fg-muted);
@@ -229,9 +229,7 @@ h1 span::after {
 
 .status-meta .sep {
     color: var(--fg-muted);
-    opacity: 0.3;
-    flex: 1;
-    text-align: center;
+    opacity: 0.4;
 }
 
 /* ===== ССЫЛКИ ===== */
