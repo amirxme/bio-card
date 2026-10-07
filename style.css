@@ -55,30 +55,32 @@ body {
 /* Контейнер */
 .container {
     min-height: 100vh;
+    width: 100%;
     max-width: 720px;
     margin: 0 auto;
-    padding: 60px 80px 60px;
+    padding: 40px 20px 40px;
     display: flex;
     flex-direction: column;
     position: relative;
     z-index: 2;
 }
 
-/* Ник */
+/* Ник — растянут на всю ширину */
 h1 {
     position: relative;
     font-family: 'Anton', sans-serif;
-    font-size: clamp(110px, 26vw, 240px);
+    font-size: 40vw;
     font-weight: 400;
     line-height: 0.82;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
     text-transform: lowercase;
     color: var(--fg);
-    margin-bottom: 32px;
-    margin-left: -8px;
-    margin-top: 40px;
+    margin-bottom: 24px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    overflow: visible;
 }
 
 /* Свечение за ником */
@@ -114,12 +116,13 @@ h1 span {
     opacity: 0;
     transform: translateY(40px);
     animation: reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    white-space: nowrap;
 }
 
 h1 span:nth-child(1) { animation-delay: 0.1s; }
 h1 span:nth-child(2) { 
     animation-delay: 0.25s;
-    padding-left: 0.4em;
+    padding-left: 0.55em;
     color: var(--fg-dim);
 }
 
@@ -143,6 +146,7 @@ h1 span::after {
     padding-left: inherit;
     pointer-events: none;
     opacity: 0;
+    white-space: nowrap;
 }
 
 h1 span::before {
@@ -157,85 +161,38 @@ h1 span::after {
 }
 
 @keyframes glitchTop {
-    0%, 92%, 100% {
-        opacity: 0;
-        clip-path: inset(0 0 100% 0);
-        transform: translate(0, 0);
-    }
-    93% {
-        opacity: 1;
-        clip-path: inset(10% 0 55% 0);
-        transform: translate(-4px, -2px);
-    }
-    94% {
-        opacity: 1;
-        clip-path: inset(45% 0 25% 0);
-        transform: translate(4px, 1px);
-    }
-    95% {
-        opacity: 1;
-        clip-path: inset(20% 0 60% 0);
-        transform: translate(-3px, 0);
-    }
-    96% {
-        opacity: 1;
-        clip-path: inset(65% 0 10% 0);
-        transform: translate(3px, -1px);
-    }
-    97% {
-        opacity: 0;
-        clip-path: inset(0 0 100% 0);
-        transform: translate(0, 0);
-    }
+    0%, 92%, 100% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0, 0); }
+    93% { opacity: 1; clip-path: inset(10% 0 55% 0); transform: translate(-4px, -2px); }
+    94% { opacity: 1; clip-path: inset(45% 0 25% 0); transform: translate(4px, 1px); }
+    95% { opacity: 1; clip-path: inset(20% 0 60% 0); transform: translate(-3px, 0); }
+    96% { opacity: 1; clip-path: inset(65% 0 10% 0); transform: translate(3px, -1px); }
+    97% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0, 0); }
 }
 
 @keyframes glitchBot {
-    0%, 92%, 100% {
-        opacity: 0;
-        clip-path: inset(100% 0 0 0);
-        transform: translate(0, 0);
-    }
-    93% {
-        opacity: 1;
-        clip-path: inset(60% 0 15% 0);
-        transform: translate(4px, 2px);
-    }
-    94% {
-        opacity: 1;
-        clip-path: inset(25% 0 55% 0);
-        transform: translate(-4px, -1px);
-    }
-    95% {
-        opacity: 1;
-        clip-path: inset(5% 0 70% 0);
-        transform: translate(3px, 0);
-    }
-    96% {
-        opacity: 1;
-        clip-path: inset(50% 0 30% 0);
-        transform: translate(-3px, 1px);
-    }
-    97% {
-        opacity: 0;
-        clip-path: inset(100% 0 0 0);
-        transform: translate(0, 0);
-    }
+    0%, 92%, 100% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0, 0); }
+    93% { opacity: 1; clip-path: inset(60% 0 15% 0); transform: translate(4px, 2px); }
+    94% { opacity: 1; clip-path: inset(25% 0 55% 0); transform: translate(-4px, -1px); }
+    95% { opacity: 1; clip-path: inset(5% 0 70% 0); transform: translate(3px, 0); }
+    96% { opacity: 1; clip-path: inset(50% 0 30% 0); transform: translate(-3px, 1px); }
+    97% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0, 0); }
 }
 
-/* ===== СТАТУС ===== */
+/* ===== СТАТУС — растянут на всю ширину ===== */
 .status {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 40px;
+    gap: 8px;
+    margin-bottom: 32px;
     font-family: var(--mono);
+    width: 100%;
 }
 
 .status-line {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
     font-weight: 600;
@@ -249,6 +206,7 @@ h1 span::after {
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -256,19 +214,24 @@ h1 span::after {
     50% { opacity: 0.4; transform: scale(0.85); }
 }
 
+/* Мета-строка статуса — разъезжается по краям */
 .status-meta {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 12px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
     letter-spacing: 1.5px;
     color: var(--fg-muted);
     text-transform: lowercase;
+    width: 100%;
 }
 
 .status-meta .sep {
     color: var(--fg-muted);
-    opacity: 0.5;
+    opacity: 0.3;
+    flex: 1;
+    text-align: center;
 }
 
 /* ===== ССЫЛКИ ===== */
@@ -283,7 +246,7 @@ h1 span::after {
     grid-template-columns: 40px 1fr auto;
     align-items: center;
     gap: 20px;
-    padding: 28px 0;
+    padding: 26px 0;
     border-top: 1px solid var(--border);
     text-decoration: none;
     color: var(--fg-dim);
@@ -330,7 +293,7 @@ h1 span::after {
 
 .link-name {
     font-family: 'Anton', sans-serif;
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 400;
     letter-spacing: -0.01em;
     text-transform: lowercase;
@@ -343,7 +306,7 @@ h1 span::after {
 }
 
 .link-arrow {
-    font-size: 24px;
+    font-size: 22px;
     color: var(--fg-muted);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -356,19 +319,20 @@ h1 span::after {
 /* Мобильная адаптация */
 @media (max-width: 700px) {
     .container {
-        padding: 40px 20px 40px;
+        padding: 32px 16px 32px;
     }
     h1 {
-        font-size: clamp(96px, 26vw, 140px);
-        margin-bottom: 24px;
-        margin-top: 0;
+        font-size: 40vw;
+        margin-bottom: 20px;
+        margin-top: 10px;
     }
-    .status { margin-bottom: 32px; }
+    .status { margin-bottom: 28px; }
+    .status-meta { font-size: 10px; letter-spacing: 1px; }
     .link {
         grid-template-columns: 32px 1fr auto;
         gap: 12px;
-        padding: 24px 0;
+        padding: 22px 0;
     }
-    .link-name { font-size: 28px; }
-    .link-arrow { font-size: 20px; }
+    .link-name { font-size: 26px; }
+    .link-arrow { font-size: 18px; }
 }
