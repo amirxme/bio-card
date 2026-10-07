@@ -161,21 +161,129 @@ h1 span::after {
 }
 
 @keyframes glitchTop {
-    0%, 92%, 100% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0, 0); }
-    93% { opacity: 1; clip-path: inset(10% 0 55% 0); transform: translate(-4px, -2px); }
-    94% { opacity: 1; clip-path: inset(45% 0 25% 0); transform: translate(4px, 1px); }
-    95% { opacity: 1; clip-path: inset(20% 0 60% 0); transform: translate(-3px, 0); }
-    96% { opacity: 1; clip-path: inset(65% 0 10% 0); transform: translate(3px, -1px); }
-    97% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0, 0); }
+    0%, 24%, 28%, 54%, 58%, 91%, 100% {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+        transform: translate(0, 0);
+    }
+    25% {
+        opacity: 1;
+        clip-path: inset(10% 0 55% 0);
+        transform: translate(-4px, -2px);
+    }
+    26% {
+        opacity: 1;
+        clip-path: inset(45% 0 25% 0);
+        transform: translate(4px, 1px);
+    }
+    27% {
+        opacity: 1;
+        clip-path: inset(20% 0 60% 0);
+        transform: translate(-3px, 0);
+    }
+    55% {
+        opacity: 1;
+        clip-path: inset(65% 0 10% 0);
+        transform: translate(3px, -1px);
+    }
+    56% {
+        opacity: 1;
+        clip-path: inset(15% 0 50% 0);
+        transform: translate(-4px, 2px);
+    }
+    57% {
+        opacity: 1;
+        clip-path: inset(40% 0 30% 0);
+        transform: translate(4px, -2px);
+    }
+    93% {
+        opacity: 1;
+        clip-path: inset(10% 0 55% 0);
+        transform: translate(-4px, -2px);
+    }
+    94% {
+        opacity: 1;
+        clip-path: inset(45% 0 25% 0);
+        transform: translate(4px, 1px);
+    }
+    95% {
+        opacity: 1;
+        clip-path: inset(20% 0 60% 0);
+        transform: translate(-3px, 0);
+    }
+    96% {
+        opacity: 1;
+        clip-path: inset(65% 0 10% 0);
+        transform: translate(3px, -1px);
+    }
+    97% {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes glitchBot {
-    0%, 92%, 100% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0, 0); }
-    93% { opacity: 1; clip-path: inset(60% 0 15% 0); transform: translate(4px, 2px); }
-    94% { opacity: 1; clip-path: inset(25% 0 55% 0); transform: translate(-4px, -1px); }
-    95% { opacity: 1; clip-path: inset(5% 0 70% 0); transform: translate(3px, 0); }
-    96% { opacity: 1; clip-path: inset(50% 0 30% 0); transform: translate(-3px, 1px); }
-    97% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0, 0); }
+    0%, 24%, 28%, 54%, 58%, 91%, 100% {
+        opacity: 0;
+        clip-path: inset(100% 0 0 0);
+        transform: translate(0, 0);
+    }
+    25% {
+        opacity: 1;
+        clip-path: inset(60% 0 15% 0);
+        transform: translate(4px, 2px);
+    }
+    26% {
+        opacity: 1;
+        clip-path: inset(25% 0 55% 0);
+        transform: translate(-4px, -1px);
+    }
+    27% {
+        opacity: 1;
+        clip-path: inset(5% 0 70% 0);
+        transform: translate(3px, 0);
+    }
+    55% {
+        opacity: 1;
+        clip-path: inset(50% 0 30% 0);
+        transform: translate(-3px, 1px);
+    }
+    56% {
+        opacity: 1;
+        clip-path: inset(10% 0 65% 0);
+        transform: translate(4px, -2px);
+    }
+    57% {
+        opacity: 1;
+        clip-path: inset(35% 0 40% 0);
+        transform: translate(-4px, 2px);
+    }
+    93% {
+        opacity: 1;
+        clip-path: inset(60% 0 15% 0);
+        transform: translate(4px, 2px);
+    }
+    94% {
+        opacity: 1;
+        clip-path: inset(25% 0 55% 0);
+        transform: translate(-4px, -1px);
+    }
+    95% {
+        opacity: 1;
+        clip-path: inset(5% 0 70% 0);
+        transform: translate(3px, 0);
+    }
+    96% {
+        opacity: 1;
+        clip-path: inset(50% 0 30% 0);
+        transform: translate(-3px, 1px);
+    }
+    97% {
+        opacity: 0;
+        clip-path: inset(100% 0 0 0);
+        transform: translate(0, 0);
+    }
 }
 
 /* ===== СТАТУС ===== */
