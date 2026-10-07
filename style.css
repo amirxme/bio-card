@@ -214,22 +214,22 @@ h1 span::after {
     50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-/* Мета-строка статуса — всё слева, в одну строку */
+/* Мета-строка статуса */
 .status-meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 1.5px;
-    color: var(--fg-muted);
+    color: #999999;
     text-transform: lowercase;
     width: 100%;
 }
 
 .status-meta .sep {
-    color: var(--fg-muted);
-    opacity: 0.4;
+    color: #999999;
+    opacity: 0.5;
 }
 
 /* ===== ССЫЛКИ ===== */
@@ -325,7 +325,7 @@ h1 span::after {
         margin-top: 10px;
     }
     .status { margin-bottom: 28px; }
-    .status-meta { font-size: 10px; letter-spacing: 1px; }
+    .status-meta { font-size: 11px; letter-spacing: 1px; }
     .link {
         grid-template-columns: 32px 1fr auto;
         gap: 12px;
