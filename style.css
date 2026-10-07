@@ -200,10 +200,16 @@ h1 span::after {
 .status {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 24px;
     margin-bottom: 32px;
     font-family: var(--mono);
     width: 100%;
+}
+
+.status-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .status-line {
@@ -341,7 +347,7 @@ h1 span::after {
         margin-bottom: 20px;
         margin-top: 10px;
     }
-    .status { margin-bottom: 28px; }
+    .status { margin-bottom: 28px; gap: 20px; }
     .status-meta { font-size: 11px; letter-spacing: 1px; }
     .link {
         grid-template-columns: 32px 1fr auto;
