@@ -223,6 +223,30 @@ h1 span::after {
     gap: 8px;
 }
 
+/* Сплит-блок: LOCATION слева, VISITS справа */
+.status-block-split {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.status-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.status-col-right {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.status-col-right .status-line {
+    justify-content: flex-end;
+}
+
 .status-line {
     display: flex;
     align-items: center;
@@ -259,6 +283,10 @@ h1 span::after {
     color: #999999;
     text-transform: lowercase;
     width: 100%;
+}
+
+.status-col-right .status-meta {
+    justify-content: flex-end;
 }
 
 .status-meta .sep {
